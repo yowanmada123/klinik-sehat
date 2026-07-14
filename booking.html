@@ -1,0 +1,157 @@
+<!DOCTYPE html><html lang="id"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Booking Janji – Klinik Sehat Bersama</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+:root{--green:#059669;--teal:#0d9488;--dark:#022c22;--font:'Poppins',sans-serif;--radius:14px;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font);background:#f0fdf4;color:#1e293b;}
+a{text-decoration:none;color:inherit;}ul{list-style:none;}button{font-family:var(--font);cursor:pointer;}img{display:block;max-width:100%;}
+.container{max-width:1200px;margin:0 auto;padding:0 24px;}
+nav{position:sticky;top:0;z-index:200;background:#fff;border-bottom:1px solid #d1fae5;}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:20px;}
+.logo{font-size:1.3rem;font-weight:800;color:var(--dark);}
+.logo span{color:var(--green);}
+.nav-links{display:flex;gap:4px;} .nav-links a{padding:7px 13px;border-radius:8px;font-size:.85rem;font-weight:500;color:#475569;transition:all .2s;} .nav-links a:hover,.nav-links a.active{color:var(--green);background:rgba(5,150,105,.06);}
+.btn{display:inline-flex;align-items:center;gap:6px;background:var(--green);color:#fff;border:none;padding:10px 22px;border-radius:25px;font-size:.86rem;font-weight:600;cursor:pointer;transition:all .2s;} .btn:hover{background:var(--teal);}
+.section{padding:56px 0;}
+.page-head{background:linear-gradient(135deg,var(--dark),#064e3b);padding:56px 0;color:#fff;text-align:center;}
+.page-head h1{font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:800;margin-bottom:10px;}
+.page-head p{color:rgba(255,255,255,.7);font-size:.92rem;max-width:640px;margin:0 auto;}
+.crumb{font-size:.78rem;color:#6ee7b7;margin-bottom:14px;font-weight:600;}
+.field-label{font-size:.74rem;font-weight:700;color:#475569;text-transform:uppercase;letter-spacing:.3px;margin-bottom:5px;display:block;}
+.field{width:100%;border:1.5px solid #d1fae5;border-radius:9px;padding:11px 14px;font-size:.88rem;font-family:var(--font);background:#fff;color:#1e293b;outline:none;transition:border .2s;}
+.field:focus{border-color:var(--green);}
+.toast-c{position:fixed;bottom:22px;left:22px;z-index:500;display:flex;flex-direction:column;gap:7px;}
+.toast{background:var(--dark);color:#fff;padding:11px 17px;border-radius:10px;font-size:.83rem;animation:fadeUp .3s;border-left:3px solid var(--green);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+footer{background:var(--dark);color:rgba(255,255,255,.5);padding:36px 0 0;}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding:18px 0;text-align:center;font-size:.8rem;}
+@media(max-width:768px){.nav-links{display:none;}.book-grid{grid-template-columns:1fr!important;}}
+</style>
+</head><body>
+<nav><div class="nav-inner">
+  <a href="index.html" class="logo">Klinik<span>Sehat</span></a>
+  <ul class="nav-links">
+    <li><a href="services.html">Layanan</a></li>
+    <li><a href="doctors.html">Dokter</a></li>
+    <li><a href="booking.html" class="active">Booking</a></li>
+    <li><a href="about.html">Tentang</a></li>
+    <li><a href="contact.html">Kontak</a></li>
+  </ul>
+  <div style="display:flex;gap:8px;align-items:center">
+    <a href="tel:1500123" style="display:flex;align-items:center;gap:6px;color:var(--green);font-weight:700;font-size:.86rem"><i class="fas fa-phone-alt"></i>1500-123</a>
+    <a href="booking.html" class="btn"><i class="fas fa-calendar-plus"></i>Buat Janji</a>
+  </div>
+</div></nav>
+
+<section class="page-head">
+  <div class="container">
+    <div class="crumb"><i class="fas fa-calendar-plus"></i> Booking Janji</div>
+    <h1>Buat Janji Temu Dokter</h1>
+    <p>Isi formulir di bawah ini dan tim kami akan menghubungi Anda untuk konfirmasi jadwal.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="book-grid" style="display:grid;grid-template-columns:1.6fr 1fr;gap:28px;align-items:start">
+      <div style="background:#fff;border:1.5px solid #d1fae5;border-radius:16px;padding:30px">
+        <h3 style="font-weight:700;color:var(--dark);margin-bottom:20px;font-size:1.1rem"><i class="fas fa-clipboard-list" style="color:var(--green)"></i> Formulir Booking</h3>
+        <form id="bookForm">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+            <div><label class="field-label">Nama Lengkap</label><input class="field" type="text" name="nama" placeholder="Nama pasien" required/></div>
+            <div><label class="field-label">No. Telepon</label><input class="field" type="tel" name="telp" placeholder="08xxxxxxxxxx" required/></div>
+          </div>
+          <div style="margin-bottom:16px"><label class="field-label">Email</label><input class="field" type="email" name="email" placeholder="email@contoh.com"/></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+            <div><label class="field-label">Pilih Layanan</label>
+              <select class="field" name="layanan" required>
+                <option value="">-- Pilih --</option>
+                <option>Umum / General</option>
+                <option>Gigi & Mulut</option>
+                <option>Anak & Pediatri</option>
+                <option>Kandungan & Kebidanan</option>
+                <option>Penyakit Dalam</option>
+                <option>Bedah Umum</option>
+              </select></div>
+            <div><label class="field-label">Pilih Dokter</label>
+              <select class="field" name="dokter">
+                <option value="">Tanpa preferensi</option>
+                <option>dr. Budi Santoso, Sp.PD</option>
+                <option>dr. Rina Melati, Sp.OG</option>
+                <option>drg. Dimas Prabowo</option>
+                <option>dr. Siti Rahayu, Sp.A</option>
+              </select></div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+            <div><label class="field-label">Tanggal</label><input class="field" type="date" name="tanggal" required style="color-scheme:light"/></div>
+            <div><label class="field-label">Jam</label>
+              <select class="field" name="jam" required>
+                <option value="">-- Pilih --</option>
+                <option>08.00 – 09.00</option>
+                <option>09.00 – 10.00</option>
+                <option>10.00 – 11.00</option>
+                <option>13.00 – 14.00</option>
+                <option>15.00 – 16.00</option>
+                <option>18.00 – 19.00</option>
+              </select></div>
+          </div>
+          <div style="margin-bottom:20px"><label class="field-label">Keluhan (Opsional)</label><textarea class="field" name="keluhan" rows="3" placeholder="Ceritakan keluhan Anda secara singkat"></textarea></div>
+          <button type="submit" class="btn" style="width:100%;justify-content:center;padding:13px"><i class="fas fa-calendar-check"></i>Kirim Permintaan Booking</button>
+        </form>
+      </div>
+      <div>
+        <div style="background:linear-gradient(135deg,var(--dark),#064e3b);border-radius:16px;padding:26px;color:#fff;margin-bottom:20px">
+          <h4 style="font-weight:700;margin-bottom:16px;font-size:1rem">Informasi Praktik</h4>
+          <div style="display:flex;gap:12px;margin-bottom:14px"><i class="fas fa-clock" style="color:#6ee7b7;margin-top:3px"></i><div><div style="font-size:.84rem;font-weight:600">Jam Operasional</div><div style="font-size:.78rem;color:rgba(255,255,255,.6)">Setiap hari, 07.00 – 21.00 WIB</div></div></div>
+          <div style="display:flex;gap:12px;margin-bottom:14px"><i class="fas fa-phone-alt" style="color:#6ee7b7;margin-top:3px"></i><div><div style="font-size:.84rem;font-weight:600">Hotline</div><div style="font-size:.78rem;color:rgba(255,255,255,.6)">1500-123 (Gratis, 24 jam)</div></div></div>
+          <div style="display:flex;gap:12px"><i class="fas fa-map-marker-alt" style="color:#6ee7b7;margin-top:3px"></i><div><div style="font-size:.84rem;font-weight:600">Alamat</div><div style="font-size:.78rem;color:rgba(255,255,255,.6)">Jl. Sehat No. 1, Jakarta</div></div></div>
+        </div>
+        <div style="background:#fff;border:1.5px solid #d1fae5;border-radius:16px;padding:22px">
+          <h4 style="font-weight:700;color:var(--dark);margin-bottom:12px;font-size:.95rem">Cara Booking</h4>
+          <div style="display:flex;gap:10px;margin-bottom:12px"><div style="min-width:26px;height:26px;border-radius:50%;background:rgba(5,150,105,.12);color:var(--green);display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700">1</div><div style="font-size:.8rem;color:#64748b;line-height:1.5">Isi formulir dengan data yang benar</div></div>
+          <div style="display:flex;gap:10px;margin-bottom:12px"><div style="min-width:26px;height:26px;border-radius:50%;background:rgba(5,150,105,.12);color:var(--green);display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700">2</div><div style="font-size:.8rem;color:#64748b;line-height:1.5">Tim kami menghubungi untuk konfirmasi</div></div>
+          <div style="display:flex;gap:10px"><div style="min-width:26px;height:26px;border-radius:50%;background:rgba(5,150,105,.12);color:var(--green);display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700">3</div><div style="font-size:.8rem;color:#64748b;line-height:1.5">Datang sesuai jadwal yang disepakati</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container" style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;margin-bottom:32px">
+    <div><div class="logo" style="color:#fff;display:block;margin-bottom:10px">Klinik<span style="color:var(--green)">Sehat</span></div><p style="font-size:.82rem;line-height:1.7;color:rgba(255,255,255,.55)">Klinik kesehatan terpercaya dengan 25 dokter spesialis, melayani seluruh keluarga Anda.</p></div>
+    <div><h5 style="color:#fff;font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px">Layanan</h5>
+      <a href="services.html" style="font-size:.81rem;display:block;margin-bottom:6px;color:rgba(255,255,255,.55)">Poli Umum</a>
+      <a href="services.html" style="font-size:.81rem;display:block;margin-bottom:6px;color:rgba(255,255,255,.55)">Poli Gigi</a>
+      <a href="services.html" style="font-size:.81rem;display:block;margin-bottom:6px;color:rgba(255,255,255,.55)">Poli Anak</a>
+      <a href="services.html" style="font-size:.81rem;display:block;margin-bottom:6px;color:rgba(255,255,255,.55)">Laboratorium</a>
+    </div>
+    <div><h5 style="color:#fff;font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px">Info</h5>
+      <a href="about.html" style="font-size:.81rem;display:block;margin-bottom:6px;color:rgba(255,255,255,.55)">Tentang Kami</a>
+      <a href="doctors.html" style="font-size:.81rem;display:block;margin-bottom:6px;color:rgba(255,255,255,.55)">Tim Dokter</a>
+      <a href="booking.html" style="font-size:.81rem;display:block;margin-bottom:6px;color:rgba(255,255,255,.55)">Booking Janji</a>
+      <a href="contact.html" style="font-size:.81rem;display:block;margin-bottom:6px;color:rgba(255,255,255,.55)">Kontak</a>
+    </div>
+    <div><h5 style="color:#fff;font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px">Kontak</h5>
+      <div style="font-size:.81rem;color:rgba(255,255,255,.55);margin-bottom:6px"><i class="fas fa-phone-alt" style="margin-right:6px;color:var(--green)"></i>1500-123</div>
+      <div style="font-size:.81rem;color:rgba(255,255,255,.55);margin-bottom:6px"><i class="fas fa-clock" style="margin-right:6px;color:var(--green)"></i>07.00–21.00 WIB</div>
+      <div style="font-size:.81rem;color:rgba(255,255,255,.55)"><i class="fas fa-map-marker-alt" style="margin-right:6px;color:var(--green)"></i>Jl. Sehat No. 1, Jakarta</div>
+    </div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 Klinik Sehat Bersama · Izin Operasional: 456/KLINIK/2010</p></div>
+</footer>
+
+<div class="toast-c" id="toastC"></div>
+<script>
+function showToast(m){const c=document.getElementById('toastC');const el=document.createElement('div');el.className='toast';el.textContent=m;c.appendChild(el);setTimeout(()=>el.remove(),3500);}
+document.getElementById('bookForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  const nama=this.nama.value.trim();
+  showToast('✓ Terima kasih '+nama+'! Permintaan booking Anda telah kami terima.');
+  this.reset();
+});
+</script>
+</body></html>

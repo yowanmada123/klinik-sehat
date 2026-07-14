@@ -1,0 +1,118 @@
+<!DOCTYPE html><html lang="id"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Dokter – Klinik Sehat Bersama</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+:root{--green:#059669;--teal:#0d9488;--dark:#022c22;--font:'Poppins',sans-serif;--radius:14px;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font);background:#f0fdf4;color:#1e293b;}
+a{text-decoration:none;color:inherit;}ul{list-style:none;}button{font-family:var(--font);cursor:pointer;}img{display:block;max-width:100%;}
+.container{max-width:1200px;margin:0 auto;padding:0 24px;}
+nav{position:sticky;top:0;z-index:200;background:#fff;border-bottom:1px solid #d1fae5;}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:20px;}
+.logo{font-size:1.3rem;font-weight:800;color:var(--dark);}
+.logo span{color:var(--green);}
+.nav-links{display:flex;gap:4px;} .nav-links a{padding:7px 13px;border-radius:8px;font-size:.85rem;font-weight:500;color:#475569;transition:all .2s;} .nav-links a:hover,.nav-links a.active{color:var(--green);background:rgba(5,150,105,.06);}
+.btn{display:inline-flex;align-items:center;gap:6px;background:var(--green);color:#fff;border:none;padding:10px 22px;border-radius:25px;font-size:.86rem;font-weight:600;cursor:pointer;transition:all .2s;} .btn:hover{background:var(--teal);}
+.section{padding:64px 0;}
+.page-head{background:linear-gradient(135deg,var(--dark),#064e3b);padding:56px 0;color:#fff;text-align:center;}
+.page-head h1{font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:800;margin-bottom:10px;}
+.page-head p{color:rgba(255,255,255,.7);font-size:.92rem;max-width:640px;margin:0 auto;}
+.crumb{font-size:.78rem;color:#6ee7b7;margin-bottom:14px;font-weight:600;}
+.filter-btn{padding:7px 16px;border-radius:20px;font-size:.8rem;font-weight:600;border:1.5px solid #d1fae5;background:#fff;color:#475569;transition:all .2s;}
+.filter-btn.active,.filter-btn:hover{background:var(--green);color:#fff;border-color:var(--green);}
+footer{background:var(--dark);color:rgba(255,255,255,.5);padding:36px 0 0;}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding:18px 0;text-align:center;font-size:.8rem;}
+@media(max-width:768px){.nav-links{display:none;}}
+</style>
+</head><body>
+<nav><div class="nav-inner">
+  <a href="index.html" class="logo">Klinik<span>Sehat</span></a>
+  <ul class="nav-links">
+    <li><a href="services.html">Layanan</a></li>
+    <li><a href="doctors.html" class="active">Dokter</a></li>
+    <li><a href="booking.html">Booking</a></li>
+    <li><a href="about.html">Tentang</a></li>
+    <li><a href="contact.html">Kontak</a></li>
+  </ul>
+  <div style="display:flex;gap:8px;align-items:center">
+    <a href="tel:1500123" style="display:flex;align-items:center;gap:6px;color:var(--green);font-weight:700;font-size:.86rem"><i class="fas fa-phone-alt"></i>1500-123</a>
+    <a href="booking.html" class="btn"><i class="fas fa-calendar-plus"></i>Buat Janji</a>
+  </div>
+</div></nav>
+
+<section class="page-head">
+  <div class="container">
+    <div class="crumb"><i class="fas fa-user-md"></i> Tim Dokter</div>
+    <h1>Dokter Spesialis Kami</h1>
+    <p>Ditangani oleh 25 dokter spesialis berpengalaman yang siap memberikan pelayanan terbaik untuk kesehatan Anda.</p>
+  </div>
+</section>
+
+<section class="section" style="background:#fff">
+  <div class="container">
+    <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:32px" id="filterBar"></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px" id="docGrid"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="container" style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;margin-bottom:32px">
+    <div><div class="logo" style="color:#fff;display:block;margin-bottom:10px">Klinik<span style="color:var(--green)">Sehat</span></div><p style="font-size:.82rem;line-height:1.7;color:rgba(255,255,255,.55)">Klinik kesehatan terpercaya dengan 25 dokter spesialis, melayani seluruh keluarga Anda.</p></div>
+    <div><h5 style="color:#fff;font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px">Layanan</h5>
+      <a href="services.html" style="font-size:.81rem;display:block;margin-bottom:6px;color:rgba(255,255,255,.55)">Poli Umum</a>
+      <a href="services.html" style="font-size:.81rem;display:block;margin-bottom:6px;color:rgba(255,255,255,.55)">Poli Gigi</a>
+      <a href="services.html" style="font-size:.81rem;display:block;margin-bottom:6px;color:rgba(255,255,255,.55)">Poli Anak</a>
+      <a href="services.html" style="font-size:.81rem;display:block;margin-bottom:6px;color:rgba(255,255,255,.55)">Laboratorium</a>
+    </div>
+    <div><h5 style="color:#fff;font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px">Info</h5>
+      <a href="about.html" style="font-size:.81rem;display:block;margin-bottom:6px;color:rgba(255,255,255,.55)">Tentang Kami</a>
+      <a href="doctors.html" style="font-size:.81rem;display:block;margin-bottom:6px;color:rgba(255,255,255,.55)">Tim Dokter</a>
+      <a href="booking.html" style="font-size:.81rem;display:block;margin-bottom:6px;color:rgba(255,255,255,.55)">Booking Janji</a>
+      <a href="contact.html" style="font-size:.81rem;display:block;margin-bottom:6px;color:rgba(255,255,255,.55)">Kontak</a>
+    </div>
+    <div><h5 style="color:#fff;font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px">Kontak</h5>
+      <div style="font-size:.81rem;color:rgba(255,255,255,.55);margin-bottom:6px"><i class="fas fa-phone-alt" style="margin-right:6px;color:var(--green)"></i>1500-123</div>
+      <div style="font-size:.81rem;color:rgba(255,255,255,.55);margin-bottom:6px"><i class="fas fa-clock" style="margin-right:6px;color:var(--green)"></i>07.00–21.00 WIB</div>
+      <div style="font-size:.81rem;color:rgba(255,255,255,.55)"><i class="fas fa-map-marker-alt" style="margin-right:6px;color:var(--green)"></i>Jl. Sehat No. 1, Jakarta</div>
+    </div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 Klinik Sehat Bersama · Izin Operasional: 456/KLINIK/2010</p></div>
+</footer>
+
+<script>
+const DOCTORS=[
+  {name:'dr. Budi Santoso, Sp.PD',spec:'Penyakit Dalam',img:'3',exp:'15 thn',day:'Sen–Jum'},
+  {name:'dr. Rina Melati, Sp.OG',spec:'Kandungan',img:'9',exp:'12 thn',day:'Sen–Sab'},
+  {name:'drg. Dimas Prabowo',spec:'Gigi & Mulut',img:'5',exp:'10 thn',day:'Sel–Sab'},
+  {name:'dr. Siti Rahayu, Sp.A',spec:'Anak',img:'16',exp:'8 thn',day:'Sen–Jum'},
+  {name:'dr. Andi Wijaya, Sp.PD',spec:'Penyakit Dalam',img:'12',exp:'11 thn',day:'Rab–Min'},
+  {name:'dr. Maya Kusuma',spec:'Umum',img:'20',exp:'6 thn',day:'Setiap Hari'},
+  {name:'dr. Fajar Nugroho, Sp.B',spec:'Bedah',img:'33',exp:'14 thn',day:'Sen–Kam'},
+  {name:'drg. Laras Wulandari',spec:'Gigi & Mulut',img:'25',exp:'7 thn',day:'Sen–Jum'},
+  {name:'dr. Hesti Pratiwi, Sp.A',spec:'Anak',img:'44',exp:'9 thn',day:'Sel–Sab'},
+  {name:'dr. Reza Aditya',spec:'Umum',img:'52',exp:'5 thn',day:'Setiap Hari'},
+];
+const SPECS=['Semua',...new Set(DOCTORS.map(d=>d.spec))];
+let active='Semua';
+function renderFilters(){
+  document.getElementById('filterBar').innerHTML=SPECS.map(s=>`<button class="filter-btn ${s===active?'active':''}" onclick="setFilter('${s}')">${s}</button>`).join('');
+}
+function setFilter(s){active=s;renderFilters();renderDocs();}
+function renderDocs(){
+  const list=active==='Semua'?DOCTORS:DOCTORS.filter(d=>d.spec===active);
+  document.getElementById('docGrid').innerHTML=list.map(d=>`
+    <div style="background:#f0fdf4;border-radius:14px;border:1.5px solid #d1fae5;padding:24px;text-align:center;transition:all .25s" onmouseover="this.style.borderColor='var(--green)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='#d1fae5';this.style.transform=''">
+      <img src="https://i.pravatar.cc/90?img=${d.img}" style="width:84px;height:84px;border-radius:50%;margin:0 auto 12px;border:3px solid var(--green)"/>
+      <div style="font-weight:700;font-size:.9rem;margin-bottom:3px;color:var(--dark)">${d.name}</div>
+      <div style="font-size:.76rem;color:var(--green);font-weight:600;margin-bottom:6px">${d.spec}</div>
+      <div style="font-size:.72rem;color:#94a3b8;margin-bottom:2px"><i class="fas fa-briefcase-medical"></i> ${d.exp} pengalaman</div>
+      <div style="font-size:.72rem;color:#94a3b8;margin-bottom:14px"><i class="fas fa-calendar-alt"></i> Praktik: ${d.day}</div>
+      <button onclick="window.location='booking.html'" class="btn" style="width:100%;justify-content:center;padding:8px">Buat Janji</button>
+    </div>
+  `).join('');
+}
+renderFilters();renderDocs();
+</script>
+</body></html>
